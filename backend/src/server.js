@@ -1,5 +1,6 @@
 const express = require("express")
 const mongoose = require("mongoose")
+const cors = require("cors")
 
 const routes = require("./routes.js")
 
@@ -10,7 +11,8 @@ mongoose.connect("mongodb+srv://guiselair:guiselair@omnistack-wg69j.mongodb.net/
     useUnifiedTopology: true,
 })
 
+app.use(cors())
 app.use(express.json())
 app.use(routes)
 
-app.listen(3000, (event) => console.log("Servidor rodando!"))
+app.listen(3333, (event) => console.log("Servidor rodando!"))
