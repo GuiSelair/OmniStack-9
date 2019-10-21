@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 //  Define o esquema da tabela com os seus respectivos tipos
 const BookingSchema = new mongoose.Schema({
-    data: String,
+    date: String,
     approved: Boolean,
     user: {
         type: mongoose.Schema.Types.ObjectId,

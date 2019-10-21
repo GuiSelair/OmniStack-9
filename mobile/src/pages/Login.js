@@ -4,7 +4,7 @@ import { View, KeyboardAvoidingView, Image, AsyncStorage, Platform, Text, StyleS
 import api from "../services/api"
 import logo from "../assets/logo.png"
 
-export default function Login(navigation){
+export default function Login({navigation}){
     const [email, setEmail] = useState("")
     const [techs, setTechs] = useState("")
     
@@ -32,7 +32,7 @@ export default function Login(navigation){
         await AsyncStorage.setItem("techs", techs)
         
         // Encaminha o usuário para outra rota
-        navigation.navigate("List ")
+        navigation.navigate("List")
     }
 
     return (
@@ -41,7 +41,7 @@ export default function Login(navigation){
     //  behavior="padding" => Define que quando clicado em algum input o teclado não pode cobrir a tela, sempre associado a tag acima
     //  enabled={Platform.OS === "ios"} => Define que as configurações de cima sejam apenas para IOS
 
-    <KeyboardAvoidingView enabled={Platform.OS === "ios"} behavior="padding" style={styles.container}>
+    <KeyboardAvoidingView style={styles.container}>
         <Image source={logo}></Image>
         <View style={styles.form}>
             <Text style={styles.text}>Seu E-MAIL*</Text>
