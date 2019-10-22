@@ -88,3 +88,38 @@ body, input, button{
 .content button.btn:hover{
   background: #e14F50;
 }
+
+.content button.btn-edit{
+  border: 0;
+  border-radius: 2px;
+  width: 100%;
+  height: 30px;
+  padding: 0 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #f05a5b;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.content button.btn-edit:hover{
+  background: #e14F50;
+}
+
+
+.content button.btn-remove{
+  border: 0;
+  border-radius: 2px;
+  width: 100%;
+  height: 30px;
+  padding: 0 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #531212;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.content button.btn-remove:hover{
+  background: #a52121;
+}

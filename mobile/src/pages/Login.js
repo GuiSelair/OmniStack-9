@@ -41,7 +41,7 @@ export default function Login({navigation}){
     //  behavior="padding" => Define que quando clicado em algum input o teclado não pode cobrir a tela, sempre associado a tag acima
     //  enabled={Platform.OS === "ios"} => Define que as configurações de cima sejam apenas para IOS
 
-    <KeyboardAvoidingView style={styles.container}>
+    <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <Image source={logo}></Image>
         <View style={styles.form}>
             <Text style={styles.text}>Seu E-MAIL*</Text>

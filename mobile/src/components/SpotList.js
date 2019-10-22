@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, FlatList, Image, TouchableOpacity} from "react-n
 import { widthNavigation, withNavigation } from "react-navigation"
 
 import api from "../services/api"
-import teste from "../images/teste.jpg"
+import teste from "../images/background-1571239528105.jpg"
 
 function SpotList({tech, navigation}){
     const [spots, setSpots] = useState([])
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 2,     // ADICIONA BORDA ARREDONDADA
-        marginTop: 15,
+        marginVertical: 15,
     },
 
     // TEXT BUTTON
