@@ -23,7 +23,7 @@ export default function Dashboard({history}){
     }, []);
 
     function EventClick(spot_id){
-        history.push("/remove", spot_id)
+        history.push("/remove", {spot_id})
     }
 
     return (
@@ -38,7 +38,7 @@ export default function Dashboard({history}){
                         <Link to="/edit">
                             <button className="btn-edit"><FontAwesomeIcon icon={faEdit} /></button>
                         </Link>
-                        <Link to= "/remove?id=4343">
+                        <Link to ={`/remove/${spot._id}`}>
                             <button className="btn-remove"><FontAwesomeIcon icon={faTrashAlt} /></button>
                         </Link>
                        </div>

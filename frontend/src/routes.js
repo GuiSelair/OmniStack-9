@@ -15,7 +15,7 @@ export default function Routes(){
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/new" component={New} />
                 <Route path="/edit" component={Edit} />
-                <Route path="/remove/:spot_id" component={Remove} />
+                <Route path="/remove/:id" component={Remove}  />
             </Switch>
         </BrowserRouter>
     )
