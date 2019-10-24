@@ -3,9 +3,23 @@ const User = require("../models/User")
 
 
 module.exports = {
-    async index(req,res){
-        const {tech} = req.query
-        const spots = await Spot.find({techs: tech})
+
+    async delete (req,res){
+        const {id} = req.params
+
+        const remove = await Spot.deleteOne({
+            _id: id,
+        }, error => {
+            res.json({error})
+        })
+
+        res.status(200)
+
+    },
+
+    async index (req,res){
+        const { tech } = req.query
+        const spots = await Spot.find({ techs: tech })
         return res.json({spots})
     },
 

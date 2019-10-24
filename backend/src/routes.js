@@ -15,5 +15,6 @@ routes.post("/spots", upload.single("thumbnail"), SpotController.store)
 routes.get("/spots", upload.single("thumbnail"), SpotController.index)
 routes.get("/dashboard", upload.single("thumbnail"), DashboardController.show)
 routes.post("/spots/:spot_id/bookings", BookingController.store)
+routes.delete("/remove/:id", SpotController.delete)
 
 module.exports = routes

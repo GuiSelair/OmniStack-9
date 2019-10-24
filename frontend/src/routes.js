@@ -1,10 +1,9 @@
 import React from "react"
-import { BrowserRouter, Switch, Route, useParams } from "react-router-dom"
+import { BrowserRouter, Switch, Route } from "react-router-dom"
 
 import Login from "./pages/Login"
 import Dashboard from "./pages/Dashboard"
 import New from "./pages/New"
-import Remove from "./pages/Remove"
 import Edit from "./pages/Edit"
 
 export default function Routes(){
@@ -14,8 +13,7 @@ export default function Routes(){
                 <Route path="/" exact component={Login} />
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/new" component={New} />
-                <Route path="/edit" component={Edit} />
-                <Route path="/remove/:id" component={Remove}  />
+                <Route path="/edit/:spot_id" component={Edit} />  
             </Switch>
         </BrowserRouter>
     )

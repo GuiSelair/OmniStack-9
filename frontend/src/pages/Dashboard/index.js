@@ -2,9 +2,12 @@ import React, {useEffect, useState} from "react"
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { confirmAlert } from 'react-confirm-alert'; // Import
 
 import api from "../../services/api"
 import "./styles.css"
+import '../../../node_modules/react-confirm-alert/src/react-confirm-alert.css'; // Import css
+
 
 export default function Dashboard({history}){
     const [spots, setSpots] = useState([])
@@ -22,8 +25,31 @@ export default function Dashboard({history}){
         loadSpots()
     }, []);
 
-    function EventClick(spot_id){
-        history.push("/remove", {spot_id})
+    function removeSpot(spot_id){
+        confirmAlert({
+            title: 'Confirmação',
+            message: 'Tens certeza que queres excluir este spot?',
+            buttons: [
+                {
+                    label: "Sim",
+                    onClick: () => {
+                        const user_id = localStorage.getItem("user")
+                        api.post("/remove", spot_id ,{
+                            headers: {user_id}
+                        }).then(() => {
+                            console.log("Cadastro excluido")
+                        })
+                        
+                    }
+                },
+                {
+                    label: "Não",
+                    onClick: () => history.push("/dashboard")
+                }
+            ]
+        })
+        
+
     }
 
     return (
@@ -38,9 +64,7 @@ export default function Dashboard({history}){
                         <Link to="/edit">
                             <button className="btn-edit"><FontAwesomeIcon icon={faEdit} /></button>
                         </Link>
-                        <Link to ={`/remove/${spot._id}`}>
-                            <button className="btn-remove"><FontAwesomeIcon icon={faTrashAlt} /></button>
-                        </Link>
+                        <button className="btn-remove" onClick={() => removeSpot(spot._id)}><FontAwesomeIcon icon={faTrashAlt} /></button>
                        </div>
                    </li>
                ))} 
