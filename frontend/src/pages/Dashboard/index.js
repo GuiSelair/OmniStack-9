@@ -18,9 +18,7 @@ export default function Dashboard({history}){
             const response = await api.get("/dashboard", {
                 headers: { user_id }
             })
-            setSpots(response.data.spots)            
-            console.log(response.data.spots);
-            
+            setSpots(response.data.spots)                        
         }
         loadSpots()
     }, []);
@@ -33,13 +31,12 @@ export default function Dashboard({history}){
                 {
                     label: "Sim",
                     onClick: () => {
-                        const user_id = localStorage.getItem("user")
-                        api.post("/remove", spot_id ,{
-                            headers: {user_id}
-                        }).then(() => {
-                            console.log("Cadastro excluido")
-                        })
                         
+                        api.delete(`/remove/${spot_id}`).then((response) => {
+                                window.location.reload()
+                        }, (e) => {
+                            console.error(e)
+                        })                        
                     }
                 },
                 {
@@ -61,7 +58,7 @@ export default function Dashboard({history}){
                         <strong>{spot.company}</strong>
                         <span>{spot.price ? `R$${spot.price}/dia`: "GRATUITO"}</span>
                         <div className="options">
-                        <Link to="/edit">
+                        <Link to = {`/edit/${spot._id}`}>
                             <button className="btn-edit"><FontAwesomeIcon icon={faEdit} /></button>
                         </Link>
                         <button className="btn-remove" onClick={() => removeSpot(spot._id)}><FontAwesomeIcon icon={faTrashAlt} /></button>

@@ -4,12 +4,32 @@ const User = require("../models/User")
 
 module.exports = {
 
+    async searchSpot(){
+
+
+    },
+
+    async edit(req, res){
+        const { id } = req.params
+        const {filename} = req.file
+        const {company, techs, price} = req.body
+        const {user_id} = req.headers
+
+        await Spot.updateOne({ _id: id }, {
+            thumbnail: filename,
+            company: company,
+            price: price,
+            techs: techs.split(",").map(tech => tech.trim()),
+            user: user_id,
+        })
+    },
+
     async delete (req,res){
         const {id} = req.params
 
-        const remove = await Spot.deleteOne({
+        await Spot.deleteOne({
             _id: id,
-        }, error => {
+        }, error => {const { com }
             res.json({error})
         })
 
