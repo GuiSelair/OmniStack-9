@@ -29,7 +29,7 @@ module.exports = {
 
         await Spot.deleteOne({
             _id: id,
-        }, error => {const { com }
+        }, error => {
             res.json({error})
         })
 
